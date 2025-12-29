@@ -6,5 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stanislawski1/JSPractise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Stanislawski1/JSPractise/issues"
+  },
+  "homepage": "https://github.com/Stanislawski1/JSPractise#readme",
+  "devDependencies": {
+    "cypress": "^15.8.1"
+  }
 }
