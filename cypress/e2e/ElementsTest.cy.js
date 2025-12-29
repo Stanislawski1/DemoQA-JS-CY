@@ -1,4 +1,5 @@
 import ElementsPage from './pages/ElementsPage';
+import linksData from '../fixtures/DataStorage';
 
 describe("Тестирование вкладки TextBox", () => {
 
@@ -23,12 +24,38 @@ describe("Тестирование вкладки TextBox", () => {
         ElementsPage.isChecked
     });
 
-    it("Должен сипользовать RadioButton ", () => {
+    it("Должен использовать RadioButton ", () => {
         ElementsPage.goToRadioButton
         ElementsPage.useRadioButtons
         ElementsPage.isRadioButtonActive
     });
 
+    it("Должен зарегистрировать нового пользователя", () => {
+        cy.visit('https://demoqa.com/webtables')
+        cy.get('#addNewRecordButton').click()
+        const newUser = {
+            firstName: 'Antonio',
+            lastName: 'Banderas',
+            userEmail: 'Anton@gmail.com',
+            age: '45',
+            salary: '69',
+            department: 'AQA'
+        };
+        cy.fillRegistrationForm(newUser);
+    });
+
+    it("Должен нажать кнопки", () => {
+        ElementsPage.goToRadioButton
+        ElementsPage.goToButtons
+        ElementsPage.useButtons
+    });
+
+    it("Должен нажать на линки", () => {
+        ElementsPage.goToLinks
+        ElementsPage.checkTheLinks
+    });
+
+    
 });
 
 
