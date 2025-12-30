@@ -31,7 +31,6 @@ describe("Тестирование вкладки TextBox", () => {
     });
 
     it("Должен зарегистрировать нового пользователя", () => {
-        cy.visit('https://demoqa.com/webtables')
         cy.get('#addNewRecordButton').click()
         const newUser = {
             firstName: 'Antonio',
@@ -54,8 +53,6 @@ describe("Тестирование вкладки TextBox", () => {
         ElementsPage.goToLinks
         ElementsPage.checkTheLinks
     });
-
-    
 });
 
 
