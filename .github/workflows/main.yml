@@ -12,6 +12,7 @@ jobs:
       - name: Cypress run # Запуск Cypress
         uses: cypress-io/github-action@v6
         with:
+          working-directory: DemoQA-JS-CY
           browser: chrome # Запускаем в Chrome
 
       - name: Save Video # Сохраняем видео как артефакты (если они есть)
