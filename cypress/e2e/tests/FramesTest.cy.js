@@ -1,4 +1,4 @@
-import FramesPage from './pages/FramesPage';
+import FramesPage from '../pages/FramesPage';
 
 describe("Проверка страницы фреймов", () => {
 

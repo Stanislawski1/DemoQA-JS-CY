@@ -1,0 +1,18 @@
+version: 2.1
+orbs:
+  # Используем официальный плагин Cypress
+  cypress: cypress-io/cypress@3
+
+workflows:
+  build_and_test:
+    jobs:
+      # Эта команда установит зависимости и запустит тесты
+      - cypress/run:
+          browser: chrome # Можно указать любой браузер
+          start-command: 'npm start' # Если нужно сначала запустить сервер (для DemoQA не нужно)
+          post-steps:
+            # Сохраняем скриншоты и видео как артефакты
+            - store_artifacts:
+                path: cypress/screenshots
+            - store_artifacts:
+                path: cypress/videos

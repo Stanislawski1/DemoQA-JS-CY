@@ -1,4 +1,4 @@
-import ModalPage from './pages/ModalPage';
+import ModalPage from '../pages/ModalPage';
 
 describe("Проверка модальных окон", () => {
 

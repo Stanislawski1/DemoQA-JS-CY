@@ -1,4 +1,4 @@
-import AcordianPage from './pages/AcordianPage';
+import AcordianPage from '../pages/AcordianPage';
 
 describe("Проверка страницы Accordian", () => {
 
