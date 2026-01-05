@@ -1,4 +1,4 @@
-import AlertsPage from './pages/AlertsPage';
+import AlertsPage from '../pages/AlertsPage';
 
 describe("Проверка алертов", () => {
 

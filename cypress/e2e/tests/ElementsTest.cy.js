@@ -1,5 +1,5 @@
-import ElementsPage from './pages/ElementsPage';
-import linksData from '../fixtures/DataStorage';
+import ElementsPage from '../pages/ElementsPage';
+import linksData from '../../fixtures/DataStorage';
 
 describe("Тестирование вкладки TextBox", () => {
 

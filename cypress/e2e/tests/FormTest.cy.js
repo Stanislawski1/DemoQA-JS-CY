@@ -1,5 +1,5 @@
-import FormPage from './pages/FormPage';
-import MainPage from './pages/MainPage';
+import FormPage from '../pages/FormPage';
+import MainPage from '../pages/MainPage';
 
 describe("Тестирование вкладки Form Page", () => {
 
