@@ -3,6 +3,7 @@ import linksData from '../fixtures/DataStorage';
 
 describe("Тестирование вкладки TextBox", () => {
 
+
     Cypress.on('uncaught:exception', (err, runnable) => {
         return false;
     });

@@ -7,15 +7,26 @@ describe("Проверка алертов", () => {
     });
 
     it('Опция: подмена window.open и проверка вызова (пример)', () => {
-        cy.visit('https://demoqa.com/browser-windows');
-        cy.window().then((win) => {
-            const openStub = cy.stub(win, 'open').as('openStub');
-            cy.get('#tabButton').click().then(() => {
-                cy.get('@openStub').should('be.called').and((stub) => {
-                    const firstCallArgs = stub.getCall(0).args;
-                    expect(firstCallArgs[0]).to.include('/sample');
-                });
-            });
-        });
+        AlertsPage.checkOpenedWindow
+    });
+
+    it('Проверка стандартного алерта', () => {
+        cy.visit('https://demoqa.com/alerts')
+        AlertsPage.checkTheSimpleAlert
+    });
+
+    it('Проверка алерта с ожиданием', () => {
+        cy.visit('https://demoqa.com/alerts')
+        AlertsPage.checkTheAlertWithWait
+    });
+
+    it('Проверка алерта с выбором действия', () => {
+        cy.visit('https://demoqa.com/alerts')
+        AlertsPage.checkTheAlertWithChosen
+    });
+
+    it('Prompt Alert: Ввод текста', () => {
+        cy.visit('https://demoqa.com/alerts');
+        AlertsPage.checkYesNoAlert
     });
 });
