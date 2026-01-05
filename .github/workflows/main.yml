@@ -1,0 +1,29 @@
+name: Cypress Tests # Название пайплайна
+
+on: [push] # Запускать при каждом пуше кода в репозиторий
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest # Запуск на Linux (самый быстрый вариант)
+    steps:
+      - name: Checkout # Копируем код твоего проекта в облако
+        uses: actions/checkout@v4
+
+      - name: Cypress run # Запуск Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome # Запускаем в Chrome
+
+      - name: Save Video # Сохраняем видео как артефакты (если они есть)
+        if: always() # Делать это даже если тесты упали
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+      - name: Save Screenshots # Сохраняем скриншоты при падении
+        if: failure() # Только если тесты упали
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
