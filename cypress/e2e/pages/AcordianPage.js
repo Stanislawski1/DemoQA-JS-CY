@@ -23,3 +23,4 @@ class AcordianPage {
         cy.get('section1Content').should('have.text', accordianText[2].textOne)
     }
 }
+export default new AcordianPage();

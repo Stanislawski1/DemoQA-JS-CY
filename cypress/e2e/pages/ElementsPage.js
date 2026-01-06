@@ -90,3 +90,4 @@ class ElementsPage {
             .go('back')
     }
 }
+export default new ElementsPage()

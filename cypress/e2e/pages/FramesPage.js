@@ -22,3 +22,4 @@ class FramesPage {
         cy.getIframeBody('#frame2', 'This is a sample page')
     }
 }
+export default new FramesPage()

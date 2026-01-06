@@ -12,7 +12,5 @@ class FormPage {
         return cy.contains('Practice Form').click()
     }
 
-    get usePracticeForm() {
-
-    }
 }
+export default new FormPage()
