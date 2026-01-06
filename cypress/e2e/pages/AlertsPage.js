@@ -51,3 +51,4 @@ class AlertsPage {
         cy.get('#promptResult').should('contain', 'Antonio');
     }
 }
+export default new AlertsPage();

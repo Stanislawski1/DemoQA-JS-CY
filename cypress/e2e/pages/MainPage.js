@@ -4,3 +4,4 @@ class MainPage {
         return cy.visit('https://demoqa.com/')
     }
 }
+export default new MainPage()

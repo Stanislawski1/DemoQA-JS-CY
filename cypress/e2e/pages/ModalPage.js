@@ -21,3 +21,4 @@ class ModalPage {
         cy.get('modal-content').should('not.exist')
     }
 }
+export default new ModalPage()
