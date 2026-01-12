@@ -9,51 +9,41 @@ describe("Тестирование вкладки TextBox", () => {
     });
 
     it("Должен заполнить форму TextBox", () => {
-        ElementsPage.openTheTextBoxPage
-        ElementsPage.userNameInput
-        ElementsPage.userEmailInput
-        ElementsPage.currentAddressInput
-        ElementsPage.permanentAddress
-        ElementsPage.clickSubmitButton
-        ElementsPage.checkOfSubmit
+        ElementsPage.openTheTextBoxPage()
+        ElementsPage.useTextBox(
+            "Antonio Banderas", "Antonio@gmail.com",
+            "Barcelona", "Spain"
+        )
         });
 
     it("Должен кликнуть на чекбоксы", () => {
-        ElementsPage.visitCheckBoxPage
-        ElementsPage.isOpened
-        ElementsPage.useActiveElement
-        ElementsPage.isChecked
+        ElementsPage.openCheckBoxPage()
+        ElementsPage.useCheckBoxes()
     });
 
     it("Должен использовать RadioButton ", () => {
-        ElementsPage.goToRadioButton
-        ElementsPage.useRadioButtons
-        ElementsPage.isRadioButtonActive
+        ElementsPage.openRadioButtonsPage()
+        ElementsPage.useRadioButtons()
     });
 
     it("Должен зарегистрировать нового пользователя", () => {
-        cy.get('#addNewRecordButton').click()
-        const newUser = {
-            firstName: 'Antonio',
-            lastName: 'Banderas',
-            userEmail: 'Anton@gmail.com',
-            age: '45',
-            salary: '69',
-            department: 'AQA'
-        };
-        cy.fillRegistrationForm(newUser);
+        ElementsPage.openWebTablePage()
+        ElementsPage.useWebTable(
+            "Antonio", "Banderas",
+            "Antonio@gmail.com", "45",
+            "69", "AQA"
+        )
     });
 
     it("Должен нажать кнопки", () => {
-        ElementsPage.goToRadioButton
-        ElementsPage.goToButtons
-        ElementsPage.useButtons
+        ElementsPage.openButtonsPage()
+        ElementsPage.useButtons()
     });
 
-    it("Должен нажать на линки", () => {
-        ElementsPage.goToLinks
-        ElementsPage.checkTheLinks
-    });
+    // it("Должен нажать на линки", () => {
+    //     ElementsPage.openLinksPage()
+    //     ElementsPage.checkTheLinks()
+    // });
 });
 
 

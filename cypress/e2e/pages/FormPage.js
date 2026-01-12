@@ -1,16 +1,22 @@
-class FormPage {
+import BasePage from "./base/BasePage";
+import {ROUTES} from "../../support/urls";
 
-    get openPage() {
-        return cy.visit('https://demoqa.com/automation-practice-form')
+class FormPage extends BasePage{
+
+    openPracticeFormPage() {
+        super.open(ROUTES.PRACTICEFORM)
     }
 
-    get moveToFormPage() {
-        return cy.contains('Forms').click()
+    usePracticeForm(firstName, lastName, userEmail, userNumber, currentAddress, department) {
+        const newUser = {
+            firstName: firstName,
+            lastName: lastName,
+            userEmail: userEmail,
+            userNumber: userNumber,
+            currentAddress: currentAddress,
+            department: department
+        };
+        cy.fillPracticeForm(newUser)
     }
-
-    get moveToPractiseForm() {
-        return cy.contains('Practice Form').click()
-    }
-
 }
 export default new FormPage()

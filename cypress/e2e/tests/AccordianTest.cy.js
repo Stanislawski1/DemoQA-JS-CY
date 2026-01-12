@@ -1,12 +1,11 @@
-import AcordianPage from '../pages/AcordianPage';
+import AcordianPage from '../pages/AccordianPage';
 
 describe("Проверка страницы Accordian", () => {
 
     it('Проверка наличия динамических страниц по тексту', () => {
-        cy.ignoreErrors()
-        cy.visit('https://demoqa.com/accordian')
-        AcordianPage.checkOfFirstAccordian
-        AcordianPage.checkOfSecondAccordian
-        AcordianPage.checkOfThreeAccordian
+        AcordianPage.openAccordianPage();
+        AcordianPage.checkOfFirstAccordian();
+        AcordianPage.checkOfSecondAccordian();
+        AcordianPage.checkOfThreeAccordian();
     });
 });

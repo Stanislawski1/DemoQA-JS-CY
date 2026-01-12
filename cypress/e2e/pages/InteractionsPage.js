@@ -1,15 +1,19 @@
-class InteractionsPage {
+import BasePage from "./base/BasePage";
+import {ROUTES} from "../../support/urls";
+import {elements} from "./Elements";
+
+class InteractionsPage extends BasePage{
 
     openSortablePage() {
-        cy.visit('https://demoqa.com/sortable')
+        super.open(ROUTES.SORTABLE)
     }
 
     openSelectablePage() {
-        cy.visit('https://demoqa.com/selectable')
+        super.open(ROUTES.SELECTABLE)
     }
 
     openResizablePage() {
-        cy.visit('https://demoqa.com/resizable')
+        super.open(ROUTES.RESIZABLE)
     }
 
     useDrugNDrop() {
@@ -19,12 +23,12 @@ class InteractionsPage {
         cy.dragAndDrop('Four', 'Six');
         cy.dragAndDrop('Five', 'Six');
 
-        cy.contains('.list-group-item', 'Two').next().should('have.text', 'One');
+        cy.contains(elements.groupOfDrugNDrop, 'Two').next().should('have.text', 'One');
     }
 
     useInteractiveDrugNDrop() {
-        cy.get('#demo-tab-grid').click()
-        cy.get('#demo-tabpane-grid').within(() => {
+        cy.get(elements.gridButton).click()
+        cy.get(elements.cubeInteractiveElement).within(() => {
             cy.dragAndDrop('One', 'Nine');
             cy.dragAndDrop('Two', 'Nine');
             cy.dragAndDrop('Three', 'Nine');
@@ -33,7 +37,7 @@ class InteractionsPage {
             cy.dragAndDrop('Six', 'Nine');
             cy.dragAndDrop('Seven', 'Nine');
             cy.dragAndDrop('Eight', 'Nine');
-            cy.contains('.list-group-item', 'Two').next().should('have.text', 'One');
+            cy.contains(elements.listOfItems, 'Two').next().should('have.text', 'One');
         });
     }
 
@@ -51,13 +55,13 @@ class InteractionsPage {
     }
 
     useResizable() {
-        cy.get('.react-resizable-handle').first().drag('#resizableBoxWithRestriction', {
-            target: { x: 300, y: 300 }, // Координаты внутри целевого элемента
+        cy.get(elements.resizableHandle).first().drag(elements.resizableBox, {
+            target: { x: 300, y: 300 },
             force: true
         });
 
-        cy.get('#resizableBoxWithRestriction').invoke('width').should('be.closeTo', 300, 15);
-        cy.get('#resizableBoxWithRestriction').invoke('height').should('be.closeTo', 300, 15);
+        cy.get(elements.resizableBox).invoke('width').should('be.closeTo', 300, 15);
+        cy.get(elements.resizableBox).invoke('height').should('be.closeTo', 300, 15);
     }
 }
 export default new InteractionsPage()
