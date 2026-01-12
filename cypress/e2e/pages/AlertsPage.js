@@ -5,14 +5,17 @@ import {ROUTES} from "../../support/urls";
 class AlertsPage extends BasePage{
 
     openAlertsPage() {
+        this.step('Открытие страницы Alert');
         super.open(ROUTES.ALERTS)
     }
 
     openWindowPage() {
+        this.step('Открытие страницы Window');
         super.open(ROUTES.WINDOWS)
     }
 
     checkOpenedWindow() {
+        this.step('Проверка открытия окна');
         cy.window().then((win) => {
             const openStub = cy.stub(win, 'open').as('openStub');
             cy.get(elements.tabButton).click().then(() => {
@@ -25,6 +28,7 @@ class AlertsPage extends BasePage{
     }
 
     checkTheSimpleAlert() {
+        this.step('Проверка обычного алерта');
         cy.on('window:alert', (text) =>  {
             expect(text).to.equal('You clicked a button')
         });
@@ -32,6 +36,7 @@ class AlertsPage extends BasePage{
     }
 
     checkTheAlertWithWait() {
+        this.step('Проверка алерта с ожиданием');
         cy.on('window:alert', (text) =>  {
             expect(text).to.equal('This alert appeared after 5 seconds')
         });
@@ -39,6 +44,7 @@ class AlertsPage extends BasePage{
     }
 
     checkTheAlertWithChosen() {
+        this.step('Проверка алерты с выбором');
         cy.on('window:alert', (text) =>  {
             expect(text).to.equal('Do you confirm action?')
         });
@@ -46,6 +52,7 @@ class AlertsPage extends BasePage{
     }
 
     checkYesNoAlert() {
+        this.step('Проверка интерактивного алерта');
         cy.window().then((win) => {
             cy.stub(win, 'prompt').returns('Antonio');
         });

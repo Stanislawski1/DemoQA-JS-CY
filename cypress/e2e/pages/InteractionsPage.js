@@ -5,18 +5,22 @@ import {elements} from "./Elements";
 class InteractionsPage extends BasePage{
 
     openSortablePage() {
+        this.step('Открытие SortablePage');
         super.open(ROUTES.SORTABLE)
     }
 
     openSelectablePage() {
+        this.step('Открытие SelectablePage');
         super.open(ROUTES.SELECTABLE)
     }
 
     openResizablePage() {
+        this.step('Открытие ResizablePage');
         super.open(ROUTES.RESIZABLE)
     }
 
     useDrugNDrop() {
+        this.step('Проверка функции DrugNDrop');
         cy.dragAndDrop('One', 'Six');
         cy.dragAndDrop('Two', 'Six');
         cy.dragAndDrop('Three', 'Six');
@@ -27,6 +31,7 @@ class InteractionsPage extends BasePage{
     }
 
     useInteractiveDrugNDrop() {
+        this.step('Проверка функции интерактивного DrugNDrop');
         cy.get(elements.gridButton).click()
         cy.get(elements.cubeInteractiveElement).within(() => {
             cy.dragAndDrop('One', 'Nine');
@@ -42,10 +47,12 @@ class InteractionsPage extends BasePage{
     }
 
     useSelectable(text) {
+        this.step('Проверка функции Selectable');
         cy.contains(text).click().should('have.class', 'active')
     }
 
     useGridSelectable(elOne, elTwo, elThree,elFour, elFive) {
+        this.step('Проверка функции GridSelectable');
         cy.contains('Grid').click()
         cy.contains(elOne).click().should('have.class', 'active')
         cy.contains(elTwo).click().should('have.class', 'active')
@@ -55,6 +62,7 @@ class InteractionsPage extends BasePage{
     }
 
     useResizable() {
+        this.step('Проверка функции Resizable');
         cy.get(elements.resizableHandle).first().drag(elements.resizableBox, {
             target: { x: 300, y: 300 },
             force: true
