@@ -1,87 +1,79 @@
-class ElementsPage {
 
-    get openTheTextBoxPage() {
-        cy.visit("https://demoqa.com/text-box");
+import BasePage from "./base/BasePage";
+import { elements } from './Elements';
+import {ROUTES} from "../../support/urls";
+
+class ElementsPage extends BasePage {
+
+    openTheTextBoxPage() {
+        super.open(ROUTES.TEXTBOX)
     }
 
-    get userNameInput() {
-        return cy.get('#userName').type("Antonio Banderas");
+    openCheckBoxPage() {
+        super.open(ROUTES.CHECKBOXES)
     }
 
-    get userEmailInput() {
-        return cy.get('#userEmail').type("Antonia@gmail.com");
+    openRadioButtonsPage() {
+        super.open(ROUTES.RADIOBUTTONS)
     }
 
-    get currentAddressInput() {
-        return cy.get('#currentAddress').type("Spain");
+    openButtonsPage() {
+        super.open(ROUTES.BUTTONS)
     }
 
-    get permanentAddress() {
-        return cy.get('#permanentAddress').type("Florida, LA");
+    openWebTablePage() {
+        super.open(ROUTES.WEBTABLES)
     }
 
-    get clickSubmitButton() {
-        return cy.get('#submit').click();
+    openLinksPage() {
+        super.open(ROUTES.LINKS)
     }
 
-    get checkOfSubmit() {
-        return cy.get('#name').should('contain', 'Antonio Banderas');
+    useTextBox(userName, userEmail, currentAddress, permanentAddress) {
+        cy.get(elements.userName).type(userName);
+        cy.get(elements.userEmail).type(userEmail);
+        cy.get(elements.currentAddress).type(currentAddress);
+        cy.get(elements.permanentAddress).type(permanentAddress);
+        cy.get(elements.confirmButton).click();
+        cy.get(elements.nameContainer).should('contain', userName);
+
     }
 
-    get visitCheckBoxPage() {
-        return cy.get('#item-1').click()
+    useCheckBoxes() {
+        cy.get(elements.actionElement).click()
+        cy.get(elements.checkBoxContainer).should('contain', 'Check Box')
+        cy.get(elements.checkBox).click()
+        cy.get(elements.successMessage).should('contain', 'home')
     }
 
-    get isOpened() {
-        return cy.get('.text-center').should('contain', 'Check Box')
+    useRadioButtons() {
+        cy.contains('Yes').click({ force: true })
+        cy.get(elements.successMessage).should('contain', 'Yes')
     }
 
-    get useActiveElement() {
-        return cy.get(".rct-title").click()
+    useWebTable(firstName, lastName,userEmail, age, salary, department) {
+        cy.get(elements.addNewRecordButton).click()
+        const newUser = {
+            firstName: firstName,
+            lastName: lastName,
+            userEmail: userEmail,
+            age: age,
+            salary: salary,
+            department: department
+        };
+        cy.fillRegistrationForm(newUser);
     }
 
-    get isChecked() {
-        return cy.get(".text-success").should('contain', 'home')
+    useButtons() {
+        cy.contains('button', /^Double Click Me$/).dblclick()
+        cy.get(elements.doubleClickMessage).should('contain', 'You have done a double click')
+        cy.contains('button', /^Right Click Me$/).rightclick()
+        cy.get(elements.rightClickMessage).should('contain', 'You have done a right click')
+        cy.contains('button', /^Click Me$/).click();
+        cy.get(elements.dynamicClickMessage).should('contain', 'You have done a dynamic click')
     }
 
-    get goToRadioButton() {
-        return cy.contains('Radio Button').click
-    }
-
-    get useRadioButtons() {
-        return cy.get('#yesRadio').click()
-    }
-
-    get isRadioButtonActive() {
-        return cy.get('.text-success').should('contain', 'Yes')
-    }
-
-    get goToWebTable() {
-        return cy.contains('Web Tables').click()
-    }
-
-    get useWebTable() {
-        return cy.get('#addNewRecordButton').click()
-    }
-
-    get goToButtons() {
-        return cy.contains('Buttons').click()
-    }
-
-    get useButtons() {
-        cy.get('#doubleClickBtn').dblclick()
-        cy.get('#doubleClickMessage').should('contain', 'You have done a double click')
-        cy.get('#rightClickBtn').rightclick()
-        cy.get('#rightClickMessage').should('contain', 'You have done a right click')
-        cy.contains('Click Me').click()
-        cy.get('#dynamicClickMessage').should('contain', 'You have done a dynamic click')
-    }
-
-    get goToLinks() {
-        cy.contains('Links').click()
-    }
-
-    get checkTheLinks() {
+    checkTheLinks() {
         cy.contains('Home').click()
             .should('have.attr', 'href', 'https://demoqa.com')
             .go('back')

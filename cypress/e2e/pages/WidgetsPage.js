@@ -1,13 +1,15 @@
 import { elements } from './Elements';
+import BasePage from "./base/BasePage";
+import {ROUTES} from "../../support/urls";
 
-class WidgetsPage {
+class WidgetsPage extends BasePage{
 
     openAutoCompleteLink() {
-        cy.visit('https://demoqa.com/auto-complete')
+        super.open(ROUTES.AUTOCOMPLETE)
     }
 
     openCalendarLink() {
-        cy.visit('https://demoqa.com/date-picker')
+        super.open(ROUTES.DATEPICKER)
     }
 
     useAutoComplete(colorName) {
@@ -29,7 +31,5 @@ class WidgetsPage {
         cy.get(elements.dateAndTimePickerInput).type(timeNum)
         cy.get(elements.selectedDateNtime).should('have.text', timeNum)
     }
-
-    use
 }
 export default new WidgetsPage();

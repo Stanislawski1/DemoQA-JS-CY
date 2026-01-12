@@ -1,7 +1,9 @@
-class MainPage {
+import BasePage from "./base/BasePage";
 
-    get open() {
-        return cy.visit('https://demoqa.com/')
+class MainPage extends BasePage{
+
+    openMainPage() {
+        super.open()
     }
 }
 export default new MainPage()

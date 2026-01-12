@@ -3,13 +3,11 @@ import InteractionsPage from "../pages/InteractionsPage";
 describe("Проверка страницы интерактивных элементов", () => {
     
     it('Проверка функции DrugNDrop в списке', () => {
-        cy.ignoreErrors()
         InteractionsPage.openSortablePage()
         InteractionsPage.useDrugNDrop()
     });
 
     it('Проверка функции DrugNDrop в квадрате', () => {
-        cy.ignoreErrors()
         InteractionsPage.openSortablePage()
         InteractionsPage.useInteractiveDrugNDrop()
     });

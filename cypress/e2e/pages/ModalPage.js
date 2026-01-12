@@ -1,24 +1,28 @@
-class ModalPage {
+import BasePage from "./base/BasePage";
+import {ROUTES} from "../../support/urls";
+import { bigModalWindowHeader } from '../../fixtures/DataStorage';
+import {elements} from "./Elements";
+
+class ModalPage extends BasePage{
 
     openModalPage() {
-        cy.visit('https://demoqa.com/modal-dialogs')
+        super.open(ROUTES.MODAL)
     }
 
     useTheSmallModal() {
-        cy.ignoreErrors()
-        cy.get('#showSmallModal').click()
-        cy.get('modal-content').should('be.visible')
-        cy.get('modal-body').should('have.text', 'This is a small modal. It has very less content')
-        cy.get('#closeSmallModal').click()
-        cy.get('modal-content').should('not.exist')
+        cy.get(elements.showSmallModal).click()
+        cy.get(elements.modalContent).should('be.visible')
+        cy.get(elements.modalBody).should('have.text', 'This is a small modal. It has very less content')
+        cy.get(elements.closeSmallModal).click()
+        cy.get(elements.modalContent).should('not.exist')
     }
 
     useTheLargeModal() {
-        cy.get('#showLargeModal').click()
-        cy.get('modal-content').should('be.visible')
-        cy.get('.modal-body').should('have.text', bigModalWindowHeader[0].text);
-        cy.get('#closeLargeModal').click()
-        cy.get('modal-content').should('not.exist')
+        cy.get(elements.showLargeModal).click()
+        cy.get(elements.modalContent).should('be.visible')
+        cy.get(elements.modalBody).should('have.text', bigModalWindowHeader[0].text);
+        cy.get(elements.closeLargeModal).click()
+        cy.get(elements.modalContent).should('not.exist')
     }
 }
 export default new ModalPage()

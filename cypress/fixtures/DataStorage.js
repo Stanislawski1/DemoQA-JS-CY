@@ -4,7 +4,8 @@ const linksToTest = [
     { name: 'No Content', selector: '#no-content', expectedUrl: 'https://demoqa.com/' }
 ];
 
-const bigModalWindowHeader = [
+export const bigModalWindowHeader = [
+
     {text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
             'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took' +
             ' a galley of type and scrambled it to make a type specimen book. ' +
@@ -14,7 +15,7 @@ const bigModalWindowHeader = [
             'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'}
 ]
 
-const accordianText = [
+export const accordianText = [
     {textOne: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
             'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ' +
             'when an unknown printer took a galley of type and scrambled it to make a type specimen book. ' +
