@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["cypress", "@shelex/cypress-allure-plugin"]
+  },
+  "include": ["**/*.js"]
+}
