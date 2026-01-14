@@ -33,5 +33,3 @@ The framework utilizes a custom `step()` method within the `BasePage` class. Thi
 * `cypress/e2e/`: Organized test suites (Interactions, Widgets, Forms, Modals).
 * `cypress/fixtures/`: Centralized storage for validation text and data objects.
 * `cypress/support/`: Custom commands for repetitive and complex UI tasks.
-
-##  Getting Started
